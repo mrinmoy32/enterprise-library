@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import BookCoverSvg from "./BookCoverSvg";
 
-type BookCoverVarient = "extraSmall" | "small" | "medium" | "regular" | "wide";
+type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide";
 
-const variantStyles: Record<BookCoverVarient, string> = {
+const variantStyles: Record<BookCoverVariant, string> = {
   extraSmall: "book-cover-extra-small",
   small: "book-cover-small",
   medium: "book-cover-medium",
@@ -15,7 +15,7 @@ const variantStyles: Record<BookCoverVarient, string> = {
 
 interface Props {
   className?: string;
-  variant?: BookCoverVarient;
+  variant?: BookCoverVariant;
   coverColor: string;
   coverImage: string;
 }
@@ -34,7 +34,7 @@ const BookCover = ({
         className
       )}
     >
-      <BookCoverSvg coverColor={coverColor} />
+      <BookCoverSvg coverColor={coverColor} />Book
       <div
         className="absolute z-10"
         style={{ left: "12%", width: "87.5%", height: "88%" }}
