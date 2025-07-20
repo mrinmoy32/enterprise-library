@@ -13,7 +13,15 @@ const layout = ({ children }: { children: ReactNode }) => {
           <div>{children}</div>
         </div>
       </section>
-      <section className="auth-ill"></section>
+      <section className="auth-illustration">
+        <Image
+        src='/images/auth-illustration.png'
+        alt='auth-illustration'
+        width={1000}
+        height={1000}
+        className='size-full object-cover'
+         />
+      </section>
     </main>
   );
 };
