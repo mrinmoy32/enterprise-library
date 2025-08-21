@@ -14,6 +14,8 @@ import {
 } from "@imagekit/next";
 import { useRef, useState } from "react";
 import { file } from 'zod';
+import { toast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 const {env: {imageKit: {publicKey, urlEndpoint}}} = config
 
@@ -180,7 +182,7 @@ const ImageUpload = ({
     };
 
     return (
-        <div>
+        <>
             {/* File input element using React ref */}
             <input type="file" ref={fileInputRef}/>
             {/* Button to trigger the upload process */}
@@ -190,8 +192,15 @@ const ImageUpload = ({
             </button>
             <br />
             {/* Display the current upload progress */}
-            Upload progress: 
-            <progress value={progress} max={100}></progress>
+            {/* Upload progress:  */}
+            {/* <progress value={progress} max={100}></progress> */}
+            {progress > 0 && progress !== 100 && (
+                <div className="w-full rounded-full bg-green-200">
+                <div className="progress" style={{ width: `${progress}%` }}>
+                {progress}%
+                </div>
+                </div>
+             )}
             {file.filePath ? (<IKImage
                 urlEndpoint={urlEndpoint}
                 src={file.filePath}
@@ -199,7 +208,7 @@ const ImageUpload = ({
                 height={200}
                 alt="uploaded Image"
             />) : null}
-        </div>
+        </>
     );
 };
 
